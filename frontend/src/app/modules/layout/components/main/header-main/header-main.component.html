@@ -1,0 +1,18 @@
+<header>
+  <div id="logo">
+    <span routerLink="">СИЛЬЧЕНКО И. ГР.107</span>
+  </div>
+  <div></div>
+  <div id="about" >
+    <a *ngIf="isRole()" routerLink="personal-account" routerLinkActive="myActive" title="Сервисы">Личный кабинет, {{authUser.login}}</a>
+    <a *ngIf="isRole() && authUser.role.roleName=='ADMIN'" routerLink="adminpage">Страница администратора</a>
+    <a *ngIf="isRole()" (click)="outFromAccount()" >Выйти</a>
+    <a *ngIf="!isRole()" (click)="modalService.openModal(register)"  title="Зарегистрироваться">Зарегистрироваться</a>
+    <a *ngIf="!isRole()" (click)="modalService.openModal(template)" title="Войти">Войти</a>
+  </div>
+
+</header>
+
+<ng-template #register><app-register></app-register></ng-template>
+<ng-template #template><app-login></app-login></ng-template>
+

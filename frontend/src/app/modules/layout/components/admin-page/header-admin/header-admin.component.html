@@ -1,0 +1,10 @@
+<header>
+  <div id="logo">
+    <span routerLink="">СИЛЬЧЕНКО И. ГР.107</span>
+  </div>
+
+  <div id="about">
+    <a *ngIf="isRole()" routerLink="" routerLinkActive="myActive" title="Сервисы">Главная</a>
+    <a *ngIf="isRole()" (click)="outFromAccount()" >Выйти</a>
+  </div>
+</header>

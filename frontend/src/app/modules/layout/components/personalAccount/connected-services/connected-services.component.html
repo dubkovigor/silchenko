@@ -1,0 +1,24 @@
+<div id="service">
+  <h1><span>Сервисы</span></h1>
+  <h3 id="inf">Купленные товары</h3>
+  <table>
+    <thead>
+    <tr>
+      <td>Подключенные сервисы</td>
+      <td>Описание сервиса</td>
+      <td>Цена</td>
+      <td>Отписаться</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let serv of authUser.servs">
+      <td>{{serv.serviceName}}</td>
+      <td>{{serv.serviceDescription}}</td>
+      <td>{{serv.price}}</td>
+      <td><div>
+        <button (click)="unsubscribeClick(serv)">Удалить из истории</button>
+      </div></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
