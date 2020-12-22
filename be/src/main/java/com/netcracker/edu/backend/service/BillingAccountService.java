@@ -1,4 +1,4 @@
-package be.src.main.java.com.netcracker.edu.backend.service;
+package com.netcracker.edu.backend.service;
 
 import com.netcracker.edu.backend.entity.BillingAccount;
 

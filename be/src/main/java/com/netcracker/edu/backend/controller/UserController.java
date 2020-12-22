@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.entity.*;
+import com.netcracker.edu.backend.service.BillingAccountService;
 import com.netcracker.edu.backend.service.ServService;
 import com.netcracker.edu.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserController {
     private UserService userService;
     private ServService servService;
     @Autowired
-    private be.src.main.java.com.netcracker.edu.backend.service.BillingAccountService billingAccountService;
+    private BillingAccountService billingAccountService;
 
     @Autowired
     public UserController(UserService userService, ServService servService) {

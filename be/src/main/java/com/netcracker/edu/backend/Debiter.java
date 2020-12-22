@@ -1,9 +1,7 @@
 package com.netcracker.edu.backend;
 
-import com.netcracker.edu.backend.entity.Serv;
 import com.netcracker.edu.backend.entity.User;
 import com.netcracker.edu.backend.service.BillingAccountService;
-import com.netcracker.edu.backend.service.ServService;
 import com.netcracker.edu.backend.service.UserService;
 import com.netcracker.edu.backend.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class Debiter {
@@ -28,13 +24,13 @@ public class Debiter {
     public Debiter() {
     }
 
-//    @Autowired
+    //    @Autowired
     public Debiter(UserService userService) {
         this.userService = userService;
     }
 
     @Scheduled(fixedDelay = 5000)
-    public void debit(){
+    public void debit() {
 
         List<User> users = userService.findAll();
 
