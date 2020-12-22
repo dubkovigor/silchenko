@@ -1,15 +1,12 @@
 package com.netcracker.edu.backend.controller;
 
 import com.netcracker.edu.backend.entity.*;
-import com.netcracker.edu.backend.service.BillingAccountService;
 import com.netcracker.edu.backend.service.ServService;
 import com.netcracker.edu.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.jws.soap.SOAPBinding;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -19,7 +16,7 @@ public class UserController {
     private UserService userService;
     private ServService servService;
     @Autowired
-    private BillingAccountService billingAccountService;
+    private be.src.main.java.com.netcracker.edu.backend.service.BillingAccountService billingAccountService;
 
     @Autowired
     public UserController(UserService userService, ServService servService) {
@@ -74,8 +71,7 @@ public class UserController {
         Set<Serv> servs = user.getServs();
         servs.add(service);
         user.setServs(servs);
-        user.getBa_Id().getWallet().setAmount(user.getBa_Id().getWallet().getAmount() - service.getPrice());
-        userService.save(user);
+        userService.save(writeOffMoney(user, service));
         return user;
     }
 
@@ -89,6 +85,11 @@ public class UserController {
         }});
         user.setServs(servs);
         userService.save(user);
+        return user;
+    }
+
+    public User writeOffMoney(User user, Serv service){
+        user.getBa_Id().getWallet().setAmount(user.getBa_Id().getWallet().getAmount() - service.getPrice());
         return user;
     }
 
